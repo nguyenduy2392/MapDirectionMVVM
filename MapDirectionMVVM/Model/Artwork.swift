@@ -18,8 +18,9 @@ class Artwork: NSObject, MKAnnotation {
   var type: AttractionType
   var rotate: CLLocationDirection
   var runTime: Float = 0
+  var zPosition: CGFloat = 1
   
-  init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, type: AttractionType, rotate: CLLocationDirection, runTime: Float) {
+  init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, type: AttractionType, rotate: CLLocationDirection, runTime: Float, zPosition: CGFloat) {
     self.title = title
     self.locationName = locationName
     self.discipline = discipline
@@ -27,6 +28,7 @@ class Artwork: NSObject, MKAnnotation {
     self.type = type
     self.rotate = rotate
     self.runTime = runTime
+    self.zPosition = zPosition
     
     super.init()
   }

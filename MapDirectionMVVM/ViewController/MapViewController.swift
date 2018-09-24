@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    mapView.delegate = self
     
     _ = originTextField.rx.text
       .map {$0 ?? ""}
@@ -32,6 +33,13 @@ class MapViewController: UIViewController {
     _ = destinationTextField.rx.text
       .map {$0 ?? ""}
       .bind(to: directionViewModel.destination)
+    directionViewModel.isValid.subscribe(onNext: {[weak self] inValid in
+      if inValid {
+        self?.removeAll()
+        self?.directionViewModel.resetPosition()
+        self?.directionViewModel.loadRoutes()
+      }
+    })
     _ = directionViewModel.routes.asObservable().subscribe(onNext: {[weak self] _ in
       self?.mapView.removeAnnotations((self?.mapView.annotations)!)
       if (self?.directionViewModel.runPathPolyline.count)! > 0 {
@@ -43,23 +51,19 @@ class MapViewController: UIViewController {
         self?.directionViewModel.updatePosition()
       }
     }, onError: nil, onCompleted: nil, onDisposed: nil)
-    
-    mapView.delegate = self
+ 
     _ = directionViewModel.annotationPosition.asObservable().subscribe(onNext: {[weak self] annotationPosition in
       if (self?.directionViewModel.runPathPolyline.count)! > 0 {
         self?.mapView.removeAnnotations([(self?.myLocation)!])
         self?.myLocation = self?.directionViewModel.runPathPolyline[annotationPosition]
         self?.mapView.addAnnotation((self?.myLocation)!)
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance((self?.myLocation.coordinate)!, AppConstant.regionRadius, AppConstant.regionRadius)
-        self?.mapView.setRegion(coordinateRegion, animated: true)
       }
     }, onError: nil, onCompleted: nil, onDisposed: nil)
-  }
-  
-  @IBAction func directionButtonTouchUp(_ sender: Any) {
-    removeAll()
-    directionViewModel.resetPosition()
-    directionViewModel.loadRoutes()
+    
+    _ = directionViewModel.centerLocation.asObservable().subscribe(onNext: {[weak self] centerLocation in
+      let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, AppConstant.regionRadius, AppConstant.regionRadius)
+      self?.mapView.setRegion(coordinateRegion, animated: true)
+    }, onError: nil, onCompleted: nil, onDisposed: nil)
   }
   
   func removeAll() {
@@ -109,5 +113,6 @@ class AttractionAnnotationView: MKAnnotationView {
     
     image = attractionAnnotation.type.image()
     transform = CGAffineTransform(rotationAngle: CGFloat(attractionAnnotation.rotate * Double.pi / 180 ))
+    layer.zPosition = attractionAnnotation.zPosition
   }
 }

@@ -15,4 +15,7 @@ class AppConstant {
   static let ApiKey = "AIzaSyDI149vbv73cdxHJXytpvBXcFxBQWT-GQ4"
   static let replaySpeed: Float = 100
   static let regionRadius: CLLocationDistance = 10000
+  static let maxLeng: Int = 150
+  static let defaultMapCenter: CLLocation = CLLocation(latitude: CLLocationDegrees(21.0367839), longitude: CLLocationDegrees(105.832456))
+  static let updateCenterLength: Double = 1500
 }
