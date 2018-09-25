@@ -25,70 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapDirectionMVVM/Service/APIClient.swift"
-            timestampString = "559500542.355952"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "rx_request(request:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapDirectionMVVM/Service/APIClient.swift"
-            timestampString = "559500542.355991"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "rx_request(request:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static MapDirectionMVVM.APIClient.rx_request&lt;A where A: MapDirectionMVVM.Request&gt;(request: A) -&gt; RxSwift.Observable&lt;A.BaseResponse&gt;"
-                  moduleName = "MapDirectionMVVM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/duy/Desktop/learn_ios/MapDirectionMVVM/MapDirectionMVVM/Service/APIClient.swift"
-                  timestampString = "559107332.568616"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "1099">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[2] = Value Promoted from Box&gt; of closure #1 (RxSwift.AnyObserver&lt;A.BaseResponse&gt;) -&gt; RxSwift.Disposable in static MapDirectionMVVM.APIClient.rx_request&lt;A where A: MapDirectionMVVM.Request&gt;(request: A) -&gt; RxSwift.Observable&lt;A.BaseResponse&gt;"
-                  moduleName = "MapDirectionMVVM"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/duy/Desktop/learn_ios/MapDirectionMVVM/MapDirectionMVVM/Service/APIClient.swift"
-                  timestampString = "559107332.571876"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "101">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MapDirectionMVVM/Service/Request/DirectionRequest.swift"
             timestampString = "559536532.100135"
             startingColumnNumber = "9223372036854775807"
@@ -106,45 +42,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapDirectionMVVM/ViewController/MapViewController.swift"
-            timestampString = "559536532.100196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapDirectionMVVM/ViewController/MapViewController.swift"
-            timestampString = "559536532.100643"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "init(annotation:reuseIdentifier:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MapDirectionMVVM/ViewController/MapViewController.swift"
-            timestampString = "559536532.101036"
+            timestampString = "559547098.164523"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

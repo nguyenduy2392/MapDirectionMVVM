@@ -21,7 +21,12 @@ struct APIClient {
   public static func rx_request<T : Request>(request: T) -> Observable<T.BaseResponse> {
     
     let url = AppConstant.BaseUrl
-    var urlRequest = URLRequest(url: URL(string: url + request.path)!)
+    guard let strongUrl = URL(string: url + request.path) else {
+      return Observable.create({ observer in
+        return Disposables.create {}
+      })
+    }
+    var urlRequest = URLRequest(url: strongUrl)
     
     urlRequest.httpMethod = request.method.rawValue
     urlRequest.allHTTPHeaderFields = request.headerFields

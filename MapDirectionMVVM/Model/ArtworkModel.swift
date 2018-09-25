@@ -54,23 +54,11 @@ enum AttractionType: Int {
   func image() -> UIImage {
     switch self {
     case .start:
-      return resizeImage(image: #imageLiteral(resourceName: "start"), newWidth: 20.0)
+      return  #imageLiteral(resourceName: "start1").resizeImage(newWidth: 20.0)
     case .stop:
-      return resizeImage(image: #imageLiteral(resourceName: "stop"), newWidth: 20.0)
+      return #imageLiteral(resourceName: "stop1").resizeImage(newWidth: 20.0)
     case .car:
-      return resizeImage(image: #imageLiteral(resourceName: "car"), newWidth: 30.0)
+      return  #imageLiteral(resourceName: "car1").resizeImage(newWidth: 30.0)
     }
   }
-}
-
-func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-  
-  let scale = newWidth / image.size.width
-  let newHeight = image.size.height * scale
-  UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-  image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-  let newImage = UIGraphicsGetImageFromCurrentImageContext()
-  UIGraphicsEndImageContext()
-  
-  return newImage!
 }

@@ -49,7 +49,7 @@ class MapViewController: UIViewController {
           self?.mapView.addAnnotation((self?.directionViewModel.startPoint!)!)
           self?.mapView.addAnnotation((self?.directionViewModel.endPoint!)!)
           self?.mapView.addAnnotation((self?.myLocation)!)
-          self?.mapView.addOverlay((self?.directionViewModel.polyline)!, level: .aboveRoads)
+          self?.mapView.add((self?.directionViewModel.polyline)!, level: .aboveRoads)
           self?.directionViewModel.updatePosition()
         }
       }).disposed(by: disposeBag)
@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
       }).disposed(by: disposeBag)
     
     directionViewModel.centerLocation.asObservable().subscribe(onNext: {[weak self] centerLocation in
-      let coordinateRegion = MKCoordinateRegion.init(center: centerLocation.coordinate, latitudinalMeters: AppConstant.regionRadius, longitudinalMeters: AppConstant.regionRadius)
+      let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, AppConstant.regionRadius, AppConstant.regionRadius)
       self?.mapView.setRegion(coordinateRegion, animated: true)
     }).disposed(by: disposeBag)
   }
