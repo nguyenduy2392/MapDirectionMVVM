@@ -16,12 +16,9 @@ class MapViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var originTextField: UITextField!
   @IBOutlet weak var destinationTextField: UITextField!
-  let initialLocation = CLLocation(latitude: 40.7428859, longitude: -74.00583979999999)
-  let regionRadius: CLLocationDistance = 10000
-  var directionViewModel = DirectionViewModel()
-  var flightpathPolyline: MKPolyline!
-  var runPathPolyline: [RunPolyline] = []
+  let directionViewModel = DirectionViewModel()
   var myLocation: Artwork!
+  let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,37 +30,44 @@ class MapViewController: UIViewController {
     _ = destinationTextField.rx.text
       .map {$0 ?? ""}
       .bind(to: directionViewModel.destination)
-    directionViewModel.isValid.subscribe(onNext: {[weak self] inValid in
-      if inValid {
+    
+    directionViewModel.isValid
+      .asObservable()
+      .filter({$0 == true})
+      .subscribe(onNext: {[weak self] _ in
         self?.removeAll()
         self?.directionViewModel.resetPosition()
         self?.directionViewModel.loadRoutes()
-      }
-    })
-    _ = directionViewModel.routes.asObservable().subscribe(onNext: {[weak self] _ in
+    }).disposed(by: disposeBag)
+    
+    directionViewModel.routes
+      .asObservable()
+      .subscribe(onNext: {[weak self] _ in
       self?.mapView.removeAnnotations((self?.mapView.annotations)!)
       if (self?.directionViewModel.runPathPolyline.count)! > 0 {
         self?.myLocation = (self?.directionViewModel.runPathPolyline[(self?.directionViewModel.annotationPosition.value)!])!
         self?.mapView.addAnnotation((self?.directionViewModel.startPoint!)!)
         self?.mapView.addAnnotation((self?.directionViewModel.endPoint!)!)
         self?.mapView.addAnnotation((self?.myLocation)!)
-        self?.mapView.add((self?.directionViewModel.polyline)!, level: .aboveRoads)
+        self?.mapView.addOverlay((self?.directionViewModel.polyline)!, level: .aboveRoads)
         self?.directionViewModel.updatePosition()
       }
-    }, onError: nil, onCompleted: nil, onDisposed: nil)
+    }).disposed(by: disposeBag)
  
-    _ = directionViewModel.annotationPosition.asObservable().subscribe(onNext: {[weak self] annotationPosition in
+    directionViewModel.annotationPosition
+      .asObservable()
+      .subscribe(onNext: {[weak self] annotationPosition in
       if (self?.directionViewModel.runPathPolyline.count)! > 0 {
         self?.mapView.removeAnnotations([(self?.myLocation)!])
         self?.myLocation = self?.directionViewModel.runPathPolyline[annotationPosition]
         self?.mapView.addAnnotation((self?.myLocation)!)
       }
-    }, onError: nil, onCompleted: nil, onDisposed: nil)
+    }).disposed(by: disposeBag)
     
-    _ = directionViewModel.centerLocation.asObservable().subscribe(onNext: {[weak self] centerLocation in
-      let coordinateRegion = MKCoordinateRegionMakeWithDistance(centerLocation.coordinate, AppConstant.regionRadius, AppConstant.regionRadius)
+    directionViewModel.centerLocation.asObservable().subscribe(onNext: {[weak self] centerLocation in
+      let coordinateRegion = MKCoordinateRegion.init(center: centerLocation.coordinate, latitudinalMeters: AppConstant.regionRadius, longitudinalMeters: AppConstant.regionRadius)
       self?.mapView.setRegion(coordinateRegion, animated: true)
-    }, onError: nil, onCompleted: nil, onDisposed: nil)
+    }).disposed(by: disposeBag)
   }
   
   func removeAll() {

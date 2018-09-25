@@ -11,7 +11,6 @@ import RxCocoa
 import RxSwift
 import Alamofire
 import MapKit
-//import ObservableArray_RxSwift
 
 class DirectionViewModel {
   var routes: BehaviorRelay<[DirectionModel]> = BehaviorRelay(value: [])

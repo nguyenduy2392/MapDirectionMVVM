@@ -1,5 +1,5 @@
 //
-//  Artwork.swift
+//  ArtworkModel.swift
 //  MapDirectionMVVM
 //
 //  Created by duy on 9/19/18.

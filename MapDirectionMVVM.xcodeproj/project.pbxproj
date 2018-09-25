@@ -22,8 +22,7 @@
 		E108A3E321522D4E00E1FD74 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108A3E121522D4E00E1FD74 /* Utils.swift */; };
 		E108A3E52152343B00E1FD74 /* DirectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108A3E42152343B00E1FD74 /* DirectionModel.swift */; };
 		E108A3E7215249D000E1FD74 /* DirectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108A3E6215249D000E1FD74 /* DirectionViewModel.swift */; };
-		E108A3E92152566200E1FD74 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108A3E82152566200E1FD74 /* Artwork.swift */; };
-		E137363B21589F2900F18EA6 /* RunPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137363A21589F2900F18EA6 /* RunPolyline.swift */; };
+		E108A3E92152566200E1FD74 /* ArtworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108A3E82152566200E1FD74 /* ArtworkModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +43,7 @@
 		E108A3E121522D4E00E1FD74 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E108A3E42152343B00E1FD74 /* DirectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionModel.swift; sourceTree = "<group>"; };
 		E108A3E6215249D000E1FD74 /* DirectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionViewModel.swift; sourceTree = "<group>"; };
-		E108A3E82152566200E1FD74 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
-		E137363A21589F2900F18EA6 /* RunPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPolyline.swift; sourceTree = "<group>"; };
+		E108A3E82152566200E1FD74 /* ArtworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkModel.swift; sourceTree = "<group>"; };
 		EFA9B86B4F843E6EB3CEE37B /* Pods-MapDirectionMVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapDirectionMVVM.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapDirectionMVVM/Pods-MapDirectionMVVM.release.xcconfig"; sourceTree = "<group>"; };
 		F57AA0897D650E16AC3FB781 /* Pods-MapDirectionMVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapDirectionMVVM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapDirectionMVVM/Pods-MapDirectionMVVM.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,8 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				E108A3E42152343B00E1FD74 /* DirectionModel.swift */,
-				E108A3E82152566200E1FD74 /* Artwork.swift */,
-				E137363A21589F2900F18EA6 /* RunPolyline.swift */,
+				E108A3E82152566200E1FD74 /* ArtworkModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +217,7 @@
 				TargetAttributes = {
 					E108A3B02151F9F000E1FD74 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -330,9 +328,8 @@
 				E108A3B72151F9F000E1FD74 /* MapViewController.swift in Sources */,
 				E108A3E7215249D000E1FD74 /* DirectionViewModel.swift in Sources */,
 				E108A3B52151F9F000E1FD74 /* AppDelegate.swift in Sources */,
-				E108A3E92152566200E1FD74 /* Artwork.swift in Sources */,
+				E108A3E92152566200E1FD74 /* ArtworkModel.swift in Sources */,
 				E108A3E221522D4E00E1FD74 /* AppConstant.swift in Sources */,
-				E137363B21589F2900F18EA6 /* RunPolyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +482,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MapDirectionMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -503,7 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.MapDirectionMVVM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
