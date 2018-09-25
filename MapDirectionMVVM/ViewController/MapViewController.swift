@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class MapViewController: UIViewController {
-
+  
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var originTextField: UITextField!
   @IBOutlet weak var destinationTextField: UITextField!
@@ -38,31 +38,31 @@ class MapViewController: UIViewController {
         self?.removeAll()
         self?.directionViewModel.resetPosition()
         self?.directionViewModel.loadRoutes()
-    }).disposed(by: disposeBag)
+      }).disposed(by: disposeBag)
     
     directionViewModel.routes
       .asObservable()
       .subscribe(onNext: {[weak self] _ in
-      self?.mapView.removeAnnotations((self?.mapView.annotations)!)
-      if (self?.directionViewModel.runPathPolyline.count)! > 0 {
-        self?.myLocation = (self?.directionViewModel.runPathPolyline[(self?.directionViewModel.annotationPosition.value)!])!
-        self?.mapView.addAnnotation((self?.directionViewModel.startPoint!)!)
-        self?.mapView.addAnnotation((self?.directionViewModel.endPoint!)!)
-        self?.mapView.addAnnotation((self?.myLocation)!)
-        self?.mapView.addOverlay((self?.directionViewModel.polyline)!, level: .aboveRoads)
-        self?.directionViewModel.updatePosition()
-      }
-    }).disposed(by: disposeBag)
- 
+        self?.mapView.removeAnnotations((self?.mapView.annotations)!)
+        if (self?.directionViewModel.runPathPolyline.count)! > 0 {
+          self?.myLocation = (self?.directionViewModel.runPathPolyline[(self?.directionViewModel.annotationPosition.value)!])!
+          self?.mapView.addAnnotation((self?.directionViewModel.startPoint!)!)
+          self?.mapView.addAnnotation((self?.directionViewModel.endPoint!)!)
+          self?.mapView.addAnnotation((self?.myLocation)!)
+          self?.mapView.addOverlay((self?.directionViewModel.polyline)!, level: .aboveRoads)
+          self?.directionViewModel.updatePosition()
+        }
+      }).disposed(by: disposeBag)
+    
     directionViewModel.annotationPosition
       .asObservable()
       .subscribe(onNext: {[weak self] annotationPosition in
-      if (self?.directionViewModel.runPathPolyline.count)! > 0 {
-        self?.mapView.removeAnnotations([(self?.myLocation)!])
-        self?.myLocation = self?.directionViewModel.runPathPolyline[annotationPosition]
-        self?.mapView.addAnnotation((self?.myLocation)!)
-      }
-    }).disposed(by: disposeBag)
+        if (self?.directionViewModel.runPathPolyline.count)! > 0 {
+          self?.mapView.removeAnnotations([(self?.myLocation)!])
+          self?.myLocation = self?.directionViewModel.runPathPolyline[annotationPosition]
+          self?.mapView.addAnnotation((self?.myLocation)!)
+        }
+      }).disposed(by: disposeBag)
     
     directionViewModel.centerLocation.asObservable().subscribe(onNext: {[weak self] centerLocation in
       let coordinateRegion = MKCoordinateRegion.init(center: centerLocation.coordinate, latitudinalMeters: AppConstant.regionRadius, longitudinalMeters: AppConstant.regionRadius)
@@ -84,7 +84,7 @@ extension MapViewController: MKMapViewDelegate {
     
     return annotationView
   }
-
+  
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                calloutAccessoryControlTapped control: UIControl) {
     let location = view.annotation as! Artwork

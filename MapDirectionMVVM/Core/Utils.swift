@@ -11,10 +11,10 @@ import UIKit
 import MapKit
 
 class Utils {
-    static func convertParameterToData(_ parameters: [String: AnyObject], encode: String.Encoding = .utf8) -> Data {
-        let data = parameters.stringFromHttpParameters().data(using: encode, allowLossyConversion: false)
-        return data ?? Data()
-    }
+  static func convertParameterToData(_ parameters: [String: AnyObject], encode: String.Encoding = .utf8) -> Data {
+    let data = parameters.stringFromHttpParameters().data(using: encode, allowLossyConversion: false)
+    return data ?? Data()
+  }
   
   static func directionBetweenPoints(sourcePoint: CLLocationCoordinate2D, _ destinationPoint: CLLocationCoordinate2D) -> CLLocationDirection {
     let pointX = destinationPoint.latitude - sourcePoint.latitude
@@ -54,20 +54,20 @@ class Utils {
 }
 
 extension Dictionary {
-    public func stringFromHttpParameters() -> String {
-        let parameterArray = self.map { (key, value) -> String in
-            guard let keyString = key as? String, let percentEscapedKey = keyString.stringByAddingPercentEncodingForURLQueryValue() else { return "" }
-            guard let valueString = value as? String, let percentEscapedValue = valueString.stringByAddingPercentEncodingForURLQueryValue() else { return "" }
-            return "\(percentEscapedKey)=\(percentEscapedValue)"
-        }
-        return parameterArray.joined(separator: "&")
+  public func stringFromHttpParameters() -> String {
+    let parameterArray = self.map { (key, value) -> String in
+      guard let keyString = key as? String, let percentEscapedKey = keyString.stringByAddingPercentEncodingForURLQueryValue() else { return "" }
+      guard let valueString = value as? String, let percentEscapedValue = valueString.stringByAddingPercentEncodingForURLQueryValue() else { return "" }
+      return "\(percentEscapedKey)=\(percentEscapedValue)"
     }
+    return parameterArray.joined(separator: "&")
+  }
 }
 
 extension String {
-    public func stringByAddingPercentEncodingForURLQueryValue() -> String? {
-        let characterSet = NSMutableCharacterSet.alphanumeric()
-        characterSet.addCharacters(in: "-._~")
-        return self.addingPercentEncoding(withAllowedCharacters: characterSet as CharacterSet)
-    }
+  public func stringByAddingPercentEncodingForURLQueryValue() -> String? {
+    let characterSet = NSMutableCharacterSet.alphanumeric()
+    characterSet.addCharacters(in: "-._~")
+    return self.addingPercentEncoding(withAllowedCharacters: characterSet as CharacterSet)
+  }
 }

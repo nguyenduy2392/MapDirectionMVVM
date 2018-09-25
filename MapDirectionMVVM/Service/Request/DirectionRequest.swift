@@ -30,7 +30,7 @@ class DirectionRequest: Request {
     return [:]
   }
   var path: String {
-//    return "?key=\(AppConstant.ApiKey)&origin=\(origin)&destination=\(destination)"
+    //    return "?key=\(AppConstant.ApiKey)&origin=\(origin)&destination=\(destination)"
     return "direction\(origin)to\(destination)"
   }
   var timeout: TimeInterval {

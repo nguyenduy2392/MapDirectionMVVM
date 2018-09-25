@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 class BaseResponse: Mappable {
-    var status : String? = ""
-    var error : String? = ""
-    required init?(map: Map) {}
-    func mapping(map: Map) {
-        status <- map["status"]
-        error <- map["error_message"]
-    }
+  var status : String? = ""
+  var error : String? = ""
+  required init?(map: Map) {}
+  func mapping(map: Map) {
+    status <- map["status"]
+    error <- map["error_message"]
+  }
 }

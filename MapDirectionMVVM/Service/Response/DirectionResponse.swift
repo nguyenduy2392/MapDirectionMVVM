@@ -10,12 +10,12 @@ import Foundation
 import ObjectMapper
 
 class DirectionResponse : BaseResponse {
-    var response : [DirectionModel] = []
-    required init?(map: Map) {
-        super.init(map: map)
-    }
-    override func mapping(map: Map) {
-        super.mapping(map: map)
-        response <- map["routes"]
-    }
+  var response : [DirectionModel] = []
+  required init?(map: Map) {
+    super.init(map: map)
+  }
+  override func mapping(map: Map) {
+    super.mapping(map: map)
+    response <- map["routes"]
+  }
 }

@@ -43,7 +43,7 @@ protocol GeocodedWaypointPresentable {
 }
 
 struct GeocodedWaypoint: Mappable, GeocodedWaypointPresentable {
-
+  
   var geocoderStatus: String?
   var placeID: String?
   var types: [String]?

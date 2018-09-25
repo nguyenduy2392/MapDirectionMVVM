@@ -120,7 +120,7 @@ class DirectionViewModel {
       if response.status == "OK" {
         self?.routes.accept(response.response)
       }
-    }, onError: nil, onCompleted: nil, onDisposed: nil)
+      }, onError: nil, onCompleted: nil, onDisposed: nil)
   }
   
   func getLeg() -> Leg? {
@@ -134,12 +134,12 @@ class DirectionViewModel {
   }
   
   func updatePosition() {
-
+    
     if self.runPathPolyline.count > 0 {
       let step = 1
       guard self.annotationPosition.value + step < self.runPathPolyline.count
         else { return }
-
+      
       let nextStep = self.runPathPolyline[self.annotationPosition.value + step]
       self.annotationPosition.accept(self.annotationPosition.value + step)
       let endLocation = CLLocation(latitude: CLLocationDegrees(nextStep.coordinate.latitude), longitude: CLLocationDegrees(nextStep.coordinate.longitude))
