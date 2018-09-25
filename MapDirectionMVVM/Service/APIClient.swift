@@ -22,7 +22,7 @@ struct APIClient {
     
     let url = AppConstant.BaseUrl
     guard let strongUrl = URL(string: url + request.path) else {
-      return Observable.create({ observer in
+      return Observable.create({ _ in
         return Disposables.create {}
       })
     }
